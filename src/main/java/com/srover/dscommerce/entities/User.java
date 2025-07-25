@@ -53,6 +53,10 @@ public class User implements UserDetails {
         return false;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
