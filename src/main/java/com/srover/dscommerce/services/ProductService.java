@@ -1,7 +1,9 @@
 package com.srover.dscommerce.services;
 
+import com.srover.dscommerce.dto.CategoryDTO;
 import com.srover.dscommerce.dto.ProductDTO;
 import com.srover.dscommerce.dto.ProductMinDTO;
+import com.srover.dscommerce.entities.Category;
 import com.srover.dscommerce.entities.Product;
 import com.srover.dscommerce.repositories.ProductRepository;
 import com.srover.dscommerce.services.exceptions.DatabaseException;
@@ -73,6 +75,13 @@ public class ProductService {
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
+
+        entity.getCategories().clear();
+        for(CategoryDTO catDto : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDto.getId());
+            entity.getCategories().add(cat);
+        }
     }
 
 }
